@@ -7,8 +7,8 @@ export function fetchViewer() {
 			dispatch(actions.fetchViewer.start());
 
 			const res = await Api.Viewer.get();
-
 			dispatch(actions.fetchViewer.success(res.data));
+			console.log(res.data);
 		} catch (err) {
 			console.log(err);
 			dispatch(actions.fetchViewer.error({ message: err.message }));

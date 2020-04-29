@@ -33,7 +33,6 @@ export const Auth = {
 	},
 
 	login({ email, password }) {
-		console.log('axios body', { email, password });
 		return axios.post(urls.login, { email, password });
 	},
 

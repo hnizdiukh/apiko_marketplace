@@ -1,15 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { LoginForm } from './LoginFormComponent';
 import * as Yup from 'yup';
-import Api from 'src/api';
 import { useHistory } from 'react-router-dom';
 import routes from 'src/routes/config';
-import { UserContext } from 'src/utils/UserContext';
+
+import store from 'src/store/createStore';
+import { authOperations } from 'src/modules/auth';
+import Loading from '../CustomComponents/Loading';
 
 const LoginFormContainer = () => {
 	const history = useHistory();
-
-	const { setUser } = useContext(UserContext);
+	const dispatch = useDispatch();
+	let isLoading = useSelector((state) => state.auth.login.isLoading);
 
 	const LoginSchema = Yup.object().shape({
 		email: Yup.string().email('Invalid email').required('Required'),
@@ -19,18 +22,23 @@ const LoginFormContainer = () => {
 	let initialValues = { email: '', password: '' };
 
 	const onSubmit = async (values) => {
-		try {
-			const res = await Api.Auth.login({ email: values.email, password: values.password });
-			Api.Auth.setToken(res.data.token);
-			console.log(res.data);
-			setUser(res.data.user);
+		await dispatch(authOperations.login({ email: values.email, password: values.password }));
+		let storeState = await store.getState();
+		let isSuccess = storeState.auth.login.isSuccess;
+		if (isSuccess) {
 			history.push(routes.HOME);
-		} catch (error) {
-			console.error(error);
+		} else {
+			console.error('login error: ', storeState.auth.login.error);
 		}
 	};
 
-	return <LoginForm schema={LoginSchema} initialValues={initialValues} onSubmit={onSubmit} />;
+	let Login = isLoading ? (
+		<Loading />
+	) : (
+		<LoginForm schema={LoginSchema} initialValues={initialValues} onSubmit={onSubmit} />
+	);
+
+	return Login;
 };
 
 export default LoginFormContainer;

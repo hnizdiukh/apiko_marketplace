@@ -1,31 +1,36 @@
-import React, { useState, useMemo } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import './App.css';
 import NavBar from './components/NavBar/NavBarContainer';
 import LoginForm from './components/LoginForm/LoginFormContainer';
 import RegisterForm from './components/RegisterForm/RegisterFormContainer';
 import routes from './routes/config';
 import Homepage from './components/Homepage/HomepageContainer';
-import { UserContext } from './utils/UserContext';
+import store from './store/createStore';
+import { appOperations } from './modules/app';
+import { viewerOperations } from './modules/viewer';
 
 const App = () => {
-	const [ user, setUser ] = useState(null);
-
-	const providerValue = useMemo(() => ({ user, setUser }), [ user, setUser ]);
+	store.dispatch(appOperations.init());
+	store.dispatch(viewerOperations.fetchViewer());
 
 	return (
 		<BrowserRouter>
+			<NavBar />
 			<Switch>
-				<UserContext.Provider value={providerValue}>
-					<NavBar />
-					<Route path={routes.HOME} exact component={Homepage} />
-					<Route path={routes.LOGIN} component={LoginForm} />
-					<Route path={routes.REGISTER} component={RegisterForm} />
-				</UserContext.Provider>
+				<Route path={routes.HOME} exact component={Homepage} />
+				<Route path={routes.LOGIN} component={LoginForm} />
+				<Route path={routes.REGISTER} component={RegisterForm} />
 			</Switch>
 		</BrowserRouter>
 	);
 };
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+ReactDOM.render(
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.querySelector('#root')
+);
