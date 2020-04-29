@@ -1,13 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { NavBar } from './NavBar';
-import { UserContext } from 'src/utils/UserContext';
 import Api from 'src/api';
 import routes from 'src/routes/config';
 
 const NavBarContainer = () => {
-	const { user, setUser } = useContext(UserContext);
-
+	const [ user, setUser ] = useState();
 	const history = useHistory();
 
 	const onLogout = () => {

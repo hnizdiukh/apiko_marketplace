@@ -1,6 +1,5 @@
 import * as actions from './appActions';
 import Api from 'src/api';
-import { viewerOperations } from '../viewer';
 
 export function init() {
 	return async function initThunk(dispatch) {
@@ -8,8 +7,6 @@ export function init() {
 			dispatch(actions.initialization.start());
 
 			Api.init();
-
-			await dispatch(viewerOperations.fetchViewer());
 
 			dispatch(actions.initialization.success());
 		} catch (err) {

@@ -165,8 +165,8 @@ nav {
 	margin: -35px 10px 0 0;
 }
 
-.margin-fix {
-	margin-top: 15px;
+.toggle-password svg {
+	margin-right: 10px;
 }
 
 .error-msg {

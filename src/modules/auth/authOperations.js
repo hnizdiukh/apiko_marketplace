@@ -19,11 +19,16 @@ export function login(body) {
 	};
 }
 
-export function register() {
+export function register(body) {
 	return async function registerThunk(dispatch) {
 		try {
 			dispatch(actions.register.start());
-			dispatch(actions.register.success());
+
+			const res = await Api.Auth.login(body);
+
+			const { user, token } = res.data;
+			Api.Auth.setToken(token);
+			dispatch(actions.register.success(user));
 		} catch (err) {
 			dispatch(actions.register.error({ message: err.message }));
 		}

@@ -30,7 +30,7 @@ export const RegisterForm = (props) => {
 								label="Full name"
 								type="text"
 								name="fullName"
-								autoComplete="username"
+								autoComplete="name"
 								placeholder="Tony Stark"
 							/>
 

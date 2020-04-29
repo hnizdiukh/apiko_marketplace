@@ -1,8 +1,5 @@
-import React, { useContext } from 'react';
-import { UserContext } from 'src/utils/UserContext';
+import React from 'react';
 
-export const Homepage = (props) => {
-	const { user } = useContext(UserContext);
-
-	return <div>Homepage {user ? user.fullName : ''}</div>;
+export const Homepage = ({ user }) => {
+	return <div>{user ? user.fullName : 'Not logged'}</div>;
 };
