@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authOperations } from 'src/modules/auth';
 import store from 'src/store/createStore';
 import Loading from '../CustomComponents/Loading';
+import { toast } from 'react-toastify';
 
 const RegisterFormContainer = () => {
 	const history = useHistory();
@@ -37,6 +38,7 @@ const RegisterFormContainer = () => {
 		if (isSuccess) {
 			history.push(routes.HOME);
 		} else {
+			toast.error('User with this email is already exist');
 			console.error('login error: ', storeState.auth.register.error);
 		}
 	};

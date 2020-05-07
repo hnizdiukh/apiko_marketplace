@@ -1,0 +1,38 @@
+.search-form {
+	display: flex;
+	justify-content: center;
+	margin: 45px auto 0;
+}
+
+.search-form input {
+	padding: 9px 0 9px 35px;
+	font-size: 15px;
+	line-height: 31px;
+	border-radius: 4px;
+}
+
+.search-form input::placeholder {
+	font-size: 15px;
+	line-height: 31px;
+}
+
+#search-input {
+	margin-right: 7px;
+	flex-grow: 2;
+}
+
+#search-input input,
+#location-input input {
+	width: 100%;
+}
+
+#location-input {
+	margin-right: 7px;
+	flex-grow: 1;
+}
+
+#search-icon,
+#location-icon {
+	position: absolute;
+	padding: 16px 0 0 10px;
+}

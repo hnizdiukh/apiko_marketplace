@@ -1,8 +1,12 @@
 import React from 'react';
-import { Dots } from 'react-preloaders';
+import './loading.css';
 
 const Loading = () => {
-	return <Dots color="#349a89" background="transparent" />;
+	return (
+		<div className="loading">
+			<div className="lds-dual-ring" />
+		</div>
+	);
 };
 
 export default Loading;

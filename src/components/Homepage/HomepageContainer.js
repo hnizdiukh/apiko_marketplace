@@ -2,22 +2,30 @@ import React, { useEffect } from 'react';
 import { Homepage } from './HomepageComponent';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { viewerOperations } from 'src/modules/viewer';
 import Loading from '../CustomComponents/Loading';
+import { productsOperations } from 'src/modules/products';
 
 const HomepageContainer = () => {
 	const dispatch = useDispatch();
-	const isLoading = useSelector((state) => state.viewer.fetchViewer.isLoading);
-	const userState = useSelector((state) => state.viewer.user);
+	const user = useSelector((state) => state.viewer.user);
+	const products = useSelector((state) => state.products.products);
+	const isLoading = useSelector((state) => state.products.fetchProducts.isLoading);
 
 	useEffect(
 		() => {
-			dispatch(viewerOperations.fetchViewer());
+			if (user) dispatch(productsOperations.savedProducts());
+		},
+		[ user, dispatch ]
+	);
+
+	useEffect(
+		() => {
+			dispatch(productsOperations.fetchProducts());
 		},
 		[ dispatch ]
 	);
 
-	let HomepageElement = isLoading ? <Loading /> : <Homepage user={userState} />;
+	let HomepageElement = isLoading ? <Loading /> : <Homepage products={products} />;
 
 	return HomepageElement;
 };

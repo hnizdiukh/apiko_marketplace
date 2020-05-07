@@ -1,0 +1,74 @@
+.badge {
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.badge-toggler {
+	margin-left: 35px;
+}
+
+.account-menu {
+	position: absolute;
+	height: 150px;
+	width: 200px;
+	top: 64px;
+	right: 100px;
+	background: #ffffff;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+	border-radius: 4px;
+
+	flex-direction: column;
+}
+
+.account-dropdown-row {
+	display: flex;
+	margin-bottom: 5px;
+}
+
+.account-dropdown-row .badge {
+	margin: 10px 15px 20px;
+}
+
+.account-dropdown-col {
+	display: flex;
+	flex-direction: column;
+}
+
+.account-dropdown-fullName {
+	font-size: 10px;
+	line-height: 20px;
+	letter-spacing: 1px;
+	margin-top: 5px;
+}
+.account-dropdown-email {
+	font-size: 10px;
+	line-height: 20px;
+	letter-spacing: 1px;
+	color: #979797;
+}
+
+.profile-small-link {
+	font-size: 10px;
+	line-height: 20px;
+	letter-spacing: 1px;
+	color: #349a89;
+}
+
+.profile-link {
+	font-size: 14px;
+	line-height: 18px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+
+	color: #349a89;
+	margin-left: 15px;
+}
+
+hr {
+	width: 100%;
+	margin: 12px 0;
+	border: 1px solid #e4e4e4;
+}

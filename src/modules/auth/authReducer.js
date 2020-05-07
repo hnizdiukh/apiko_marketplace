@@ -13,6 +13,11 @@ const INITIAL_STATE = {
 		isError: false,
 		error: null,
 		isSuccess: false
+	},
+	logout: {
+		isLoading: false,
+		isError: false,
+		error: null
 	}
 };
 
@@ -77,6 +82,31 @@ export default handleActions(
 				error: action.payload,
 				isError: true,
 				isSuccess: false
+			}
+		}),
+		[actions.logout.start]: (state) => ({
+			...state,
+			logout: {
+				...state.logout,
+				isLoading: true,
+				error: null,
+				isError: false
+			}
+		}),
+		[actions.logout.success]: (state) => ({
+			...state,
+			logout: {
+				...state.logout,
+				isLoading: false
+			}
+		}),
+		[actions.logout.error]: (state, action) => ({
+			...state,
+			logout: {
+				...state.logout,
+				isLoading: false,
+				error: action.payload,
+				isError: true
 			}
 		})
 	},

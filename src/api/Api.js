@@ -3,7 +3,12 @@ import axios from 'axios';
 const urls = {
 	login: 'api/auth/login',
 	register: 'api/auth/register',
-	getViewer: 'api/account/user'
+	getViewer: 'api/account/user',
+	getProduts: 'api/products/latest',
+	putUser: 'api/account/user',
+	imageUpload: 'api/upload/images',
+	getSaved: 'api/products/saved',
+	search: 'api/products/search'
 };
 
 export const Auth = {
@@ -65,6 +70,36 @@ export const Auth = {
 export const Viewer = {
 	get() {
 		return axios.get(urls.getViewer);
+	},
+	put({ fullName, avatar, phone, location }) {
+		return axios.put(urls.putUser, { fullName, avatar, phone, location });
+	}
+};
+
+export const Products = {
+	get() {
+		return axios.get(urls.getProduts);
+	},
+	save(productId) {
+		return axios.post(`api/products/${productId}/save`);
+	},
+	unsave(productId) {
+		return axios.post(`api/products/${productId}/unsave`);
+	},
+	getSaved() {
+		return axios.get(urls.getSaved);
+	},
+	search(query) {
+		console.log(urls.search + '?' + query);
+		return axios.get(urls.search, { params: query });
+	}
+};
+
+export const Image = {
+	upload(image) {
+		const formData = new FormData();
+		formData.append('image', image);
+		return axios.post(urls.imageUpload, formData);
 	}
 };
 
