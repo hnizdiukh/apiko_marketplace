@@ -1,25 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { NavBar } from './NavBar';
-import Api from 'src/api';
 import routes from 'src/routes/config';
+import { useDispatch, useSelector } from 'react-redux';
+import { viewerOperations } from 'src/modules/viewer';
+import { authOperations } from 'src/modules/auth';
 
 const NavBarContainer = () => {
-	const [ user, setUser ] = useState();
-	const history = useHistory();
+	const dispatch = useDispatch();
+	const userState = useSelector((state) => state.viewer.user);
 
-	const onLogout = () => {
+	useEffect(
+		() => {
+			dispatch(viewerOperations.fetchViewer());
+		},
+		[ dispatch ]
+	);
+
+	const history = useHistory();
+	const onLogout = async () => {
 		try {
-			Api.Auth.logout();
+			await dispatch(authOperations.logout());
 			console.log('logout');
-			setUser(null);
 			history.push(routes.LOGIN);
 		} catch (error) {
 			console.error(error);
 		}
 	};
 
-	return <NavBar user={user} onLogout={onLogout} />;
+	return <NavBar user={userState} onLogout={onLogout} />;
 };
 
 export default NavBarContainer;

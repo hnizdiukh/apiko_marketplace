@@ -13,7 +13,7 @@ export const RegisterForm = (props) => {
 				<h1>Register</h1>
 				<Formik initialValues={props.initialValues} validationSchema={props.schema} onSubmit={props.onSubmit}>
 					{({ values, handleChange, handleSubmit, isSubmitting }) => (
-						<Form className="login-form" onSubmit={handleSubmit}>
+						<Form className="form" onSubmit={handleSubmit}>
 							<Input
 								handleChange={handleChange}
 								value={values.email}

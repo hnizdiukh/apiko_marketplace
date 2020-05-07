@@ -3,6 +3,7 @@ import { Formik, Form } from 'formik';
 import { Link } from 'react-router-dom';
 import routes from 'src/routes/config';
 
+import { ToastContainer } from 'react-toastify';
 import Input from '../CustomComponents/InputComponent';
 import Eye from '../CustomComponents/PasswordEye';
 
@@ -12,10 +13,10 @@ export const LoginForm = (props) => {
 		<Fragment>
 			<div className="login-block">
 				<h1>Login</h1>
-
+				<ToastContainer />
 				<Formik initialValues={initialValues} validationSchema={schema} onSubmit={onSubmit}>
 					{({ values, handleChange, handleSubmit, isSubmitting }) => (
-						<Form className="login-form" onSubmit={handleSubmit}>
+						<Form className="form" onSubmit={handleSubmit}>
 							<Input
 								handleChange={handleChange}
 								value={values.email}

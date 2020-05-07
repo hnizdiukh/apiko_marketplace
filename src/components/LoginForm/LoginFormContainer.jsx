@@ -5,6 +5,8 @@ import * as Yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import routes from 'src/routes/config';
 
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import store from 'src/store/createStore';
 import { authOperations } from 'src/modules/auth';
 import Loading from '../CustomComponents/Loading';
@@ -29,6 +31,7 @@ const LoginFormContainer = () => {
 			history.push(routes.HOME);
 		} else {
 			console.error('login error: ', storeState.auth.login.error);
+			toast.error('Incorrect email or password!');
 		}
 	};
 

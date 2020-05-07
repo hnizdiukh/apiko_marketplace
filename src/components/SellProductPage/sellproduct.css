@@ -1,0 +1,23 @@
+.sell-container {
+	background: #ffffff;
+	box-shadow: 0px 2px 42px rgba(0, 0, 0, 0.111233);
+	border-radius: 7px;
+	margin-top: 30px;
+}
+
+.sell-wrap {
+	width: 70%;
+	margin: auto;
+}
+
+.sell-wrap h1 {
+	padding-top: 35px;
+}
+
+.sell-wrap button {
+	padding-bottom: 10px;
+}
+
+.sell-wrap textarea {
+	width: 100% !important;
+}

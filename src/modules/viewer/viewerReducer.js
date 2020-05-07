@@ -8,7 +8,12 @@ const INITIAL_STATE = {
 		isError: false,
 		error: null
 	},
-	user: null
+	user: null,
+	putUser: {
+		isLoading: false,
+		isError: false,
+		error: null
+	}
 };
 
 export default handleActions(
@@ -37,6 +42,36 @@ export default handleActions(
 				isLoading: false,
 				error: action.payload,
 				isError: true
+			}
+		}),
+
+		[actions.putUser.start]: (state) => ({
+			...state,
+			putUser: {
+				...state.putUser,
+				isLoading: true,
+				error: null,
+				isError: false,
+				isSuccess: false
+			}
+		}),
+		[actions.putUser.success]: (state, action) => ({
+			...state,
+			putUser: {
+				...state.putUser,
+				isLoading: false,
+				isSuccess: true
+			},
+			user: action.payload
+		}),
+		[actions.putUser.error]: (state, action) => ({
+			...state,
+			putUser: {
+				...state.putUser,
+				isLoading: false,
+				error: action.payload,
+				isError: true,
+				isSuccess: false
 			}
 		})
 	},
