@@ -1,0 +1,25 @@
+.saved-items-title {
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 24px;
+	text-align: left;
+	text-transform: uppercase;
+	color: #000000;
+	padding: 20px 0;
+	margin: 0;
+}
+
+.saved-items-title span {
+	color: #5a5959;
+}
+
+.wishlist-container {
+	background: #ffffff;
+	min-height: 70vh;
+}
+
+.wishlist-container .product-container {
+	margin: 0 20px;
+}

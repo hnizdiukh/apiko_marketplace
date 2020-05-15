@@ -36,3 +36,46 @@
 	position: absolute;
 	padding: 16px 0 0 10px;
 }
+
+.product-filters {
+	background: #ffffff;
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.217111);
+	border-radius: 4px;
+	margin: 20px 0 10px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.product-filters input,
+.product-filters select,
+.product-filters button {
+	margin: 12px 10px;
+}
+
+.product-filters button {
+	display: none;
+}
+
+.product-filters input {
+	background: #f9fafb;
+	border: 1px solid #dedee0;
+	box-sizing: border-box;
+	border-radius: 5px;
+	padding: 9px;
+	padding-left: 1.3em;
+}
+
+.product-filters input::placeholder {
+	font-size: 14px;
+}
+
+.dollar {
+	margin-left: 17px;
+	margin-top: 20px;
+	padding: 0;
+	position: absolute;
+}
+
+.dollar::before {
+	content: "$";
+}

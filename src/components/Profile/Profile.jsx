@@ -2,7 +2,7 @@ import React, { Fragment, useRef, useState } from 'react';
 import { Formik, Form } from 'formik';
 import Input from '../CustomComponents/InputComponent';
 import Badge from '../CustomComponents/Badge';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { viewerOperations } from 'src/modules/viewer';
 import Api from 'src/api';
@@ -33,7 +33,6 @@ const Profile = ({ user, hanldeImageClick, initialValues, schema }) => {
 					res = await Api.Image.upload(imageSelected);
 				} catch (error) {
 					toast.error('Image can not be uploaded!');
-					console.log(error);
 				}
 			}
 			await dispatch(
@@ -47,7 +46,6 @@ const Profile = ({ user, hanldeImageClick, initialValues, schema }) => {
 			toast.success('Profile updated!');
 			history.push(routes.HOME);
 		} catch (error) {
-			console.log('Profile put error', error);
 			toast.error(error);
 		}
 	};
@@ -70,13 +68,13 @@ const Profile = ({ user, hanldeImageClick, initialValues, schema }) => {
 					>
 						{imageSelected ? 'Selected' : 'Upgrade photo'}
 					</button>
-					<input type="file" ref={imageInput} onChange={hanldeImageUpload} />
+					<input type="image" accept="image/*" ref={imageInput} onChange={hanldeImageUpload} alt="image" />
 				</div>
 				<Formik initialValues={initialValues} validationSchema={schema} onSubmit={onSubmit}>
 					{({ values, handleChange, handleSubmit, isSubmitting }) => (
 						<Form className="form" onSubmit={handleSubmit}>
 							<Input
-								handleChange={handleChange}
+								onChange={handleChange}
 								value={values.fullName}
 								label="Full name"
 								type="text"
@@ -86,7 +84,7 @@ const Profile = ({ user, hanldeImageClick, initialValues, schema }) => {
 							/>
 
 							<Input
-								handleChange={handleChange}
+								onChange={handleChange}
 								value={values.phone}
 								label="Phone number"
 								type="phone"
@@ -94,7 +92,6 @@ const Profile = ({ user, hanldeImageClick, initialValues, schema }) => {
 								autoComplete="phone"
 								placeholder="+380 12 345 678"
 							/>
-							<ToastContainer />
 							<button className="primary-btn" type="submit" disabled={isSubmitting}>
 								Save
 							</button>

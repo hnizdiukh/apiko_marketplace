@@ -8,11 +8,8 @@ export function fetchProducts() {
 
 			const res = await Api.Products.get();
 
-			console.log(res.data);
-
 			dispatch(actions.products.success(res.data));
 		} catch (err) {
-			console.log('Products operation ', err);
 			dispatch(actions.products.error({ message: err.message }));
 		}
 	};

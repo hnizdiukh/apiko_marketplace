@@ -8,6 +8,12 @@ const INITIAL_STATE = {
 		error: null,
 		isSuccess: false
 	},
+	addProduct: {
+		isLoading: false,
+		isError: false,
+		error: null,
+		isSuccess: false
+	},
 	products: [],
 	search: {
 		isLoading: false,
@@ -33,7 +39,14 @@ const INITIAL_STATE = {
 		error: null,
 		isSuccess: false
 	},
-	saved: []
+	getProduct: {
+		isLoading: false,
+		isError: false,
+		error: null,
+		isSuccess: false
+	},
+	saved: [],
+	product: null
 };
 
 export default handleActions(
@@ -61,6 +74,38 @@ export default handleActions(
 			...state,
 			fetchProducts: {
 				...state.fetchProducts,
+				isLoading: false,
+				error: action.payload,
+				isError: true,
+				isSuccess: false
+			}
+		}),
+
+		// ADD
+
+		[actions.addProduct.start]: (state) => ({
+			...state,
+			addProduct: {
+				...state.addProduct,
+				isLoading: true,
+				error: null,
+				isError: false,
+				isSuccess: false
+			}
+		}),
+		[actions.addProduct.success]: (state, action) => ({
+			...state,
+			addProduct: {
+				...state.addProduct,
+				isLoading: false,
+				isSuccess: true
+			},
+			products: [ ...state.products, action.payload ]
+		}),
+		[actions.addProduct.error]: (state, action) => ({
+			...state,
+			addProduct: {
+				...state.addProduct,
 				isLoading: false,
 				error: action.payload,
 				isError: true,
@@ -189,6 +234,36 @@ export default handleActions(
 			...state,
 			unsaveProduct: {
 				...state.unsaveProduct,
+				isLoading: false,
+				error: action.payload,
+				isError: true,
+				isSuccess: false
+			}
+		}),
+
+		[actions.getProduct.start]: (state) => ({
+			...state,
+			getProduct: {
+				...state.getProduct,
+				isLoading: true,
+				error: null,
+				isError: false,
+				isSuccess: false
+			}
+		}),
+		[actions.getProduct.success]: (state, action) => ({
+			...state,
+			getProduct: {
+				...state.getProduct,
+				isLoading: false,
+				isSuccess: true
+			},
+			product: action.payload
+		}),
+		[actions.getProduct.error]: (state, action) => ({
+			...state,
+			getProduct: {
+				...state.getProduct,
 				isLoading: false,
 				error: action.payload,
 				isError: true,

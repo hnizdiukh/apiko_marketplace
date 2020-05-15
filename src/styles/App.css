@@ -10,26 +10,7 @@ body {
 
 a {
 	text-decoration: none;
-}
-
-.have-account,
-.login-block {
-	margin: 0 auto;
-	background: #ffffff;
-	box-shadow: 0px 2px 42px rgba(0, 0, 0, 0.111233);
-	border-radius: 7px;
-}
-
-.login-block {
-	width: 425px;
-	margin-top: 80px;
-	display: flex;
-	flex-direction: column;
-}
-
-.have-account {
-	width: 425px;
-	margin-top: 20px;
+	color: inherit;
 }
 
 .form {
@@ -39,8 +20,6 @@ a {
 }
 
 h1 {
-	/* Login */
-
 	font-size: 22px;
 	line-height: 25px;
 
@@ -55,7 +34,6 @@ h1 {
 label {
 	font-size: 12px;
 	line-height: 14px;
-	/* identical to box height */
 
 	letter-spacing: 0.3px;
 	text-transform: uppercase;
@@ -63,13 +41,12 @@ label {
 	color: #303030;
 	padding-bottom: 4px;
 	margin-top: 15px;
-}
 
-.password-label {
 	text-decoration: none;
 }
 
-input {
+input,
+textarea {
 	background: #f9fafb;
 	border: 1px solid #dedee0;
 	box-sizing: border-box;
@@ -78,39 +55,17 @@ input {
 	padding: 20px 10px;
 }
 
-input::placeholder {
+textarea {
+	resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
 	font-size: 16px;
 	line-height: 18px;
 	letter-spacing: 0.4px;
 
 	color: rgba(102, 102, 102, 0.466455);
-}
-
-.forgot-password {
-	font-size: 14px;
-	line-height: 16px;
-
-	text-align: center;
-	letter-spacing: 0.4px;
-
-	color: #8c8c8c;
-
-	text-align: right;
-	padding-top: 5px;
-	text-decoration: none;
-}
-
-.have-account {
-	font-size: 14px;
-	line-height: 16px;
-
-	text-align: center;
-	letter-spacing: 0.4px;
-
-	color: #2a2a2a;
-
-	padding-top: 30px;
-	padding-bottom: 30px;
 }
 
 .have-account a {
@@ -162,72 +117,6 @@ nav {
 	width: 70vw;
 }
 
-.product-filters {
-	background: #ffffff;
-	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.217111);
-	border-radius: 4px;
-	margin: 20px 0 10px;
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.product-filters input,
-.product-filters select {
-	margin: 12px 10px;
-}
-
-.product-filters input {
-	background: #f9fafb;
-	border: 1px solid #dedee0;
-	box-sizing: border-box;
-	border-radius: 5px;
-	padding: 9px;
-}
-
-.product-filters input::placeholder {
-	font-size: 14px;
-}
-
-.product-thumbnail img {
-	border-radius: 4px 4px 0px 0px;
-	max-width: 200px;
-	max-height: 150px;
-	margin: auto;
-	margin-top: 0;
-	display: flex;
-}
-
-.product-thumbnail p {
-	font-size: 15px;
-	padding: 6px 12px;
-}
-
-.product-thumbnail b {
-	font-size: 18px;
-	line-height: 21px;
-	color: #101010;
-	margin-bottom: 10px;
-	padding-left: 12px;
-}
-
-.product-list {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
-}
-
-.product-thumbnail {
-	background: #ffffff;
-	border: 1px solid #e4e4e4;
-	box-sizing: border-box;
-	display: flex;
-	flex-direction: column;
-	margin: 5px 0;
-	box-shadow: 0px 4px 14px rgba(121, 121, 121, 0.0527344);
-	border-radius: 4px;
-	width: 200px;
-}
-
 select {
 	border: 1px solid #dedee0;
 	border-radius: 5px;
@@ -236,59 +125,29 @@ select {
 	font-size: 14px;
 }
 
-.price-between {
-	width: 12px;
-	height: 1px;
-	background: #dedee0;
-	border: none;
-	margin: auto 0;
-}
-
-.add-to-wishlist-container {
-	display: flex;
-	justify-content: flex-end;
-	margin: -15px 7px 0 0;
-}
-
-.add-to-wishlist-wrap {
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
+.modal {
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, .2);
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: #ffffff;
-	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.163407);
+}
+
+.not-found {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	color: #999;
+	font-size: 16px;
+	line-height: 18px;
+	user-select: none;
+}
+
+.toggle-password {
 	cursor: pointer;
-}
-
-.add-to-wishlist-wrap svg:hover {
-	fill: #23675c;
-}
-
-.saved-items-title {
-	font-family: Rubik;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 24px;
-	text-align: left;
-	text-transform: uppercase;
-	color: #000000;
-	padding: 20px 0;
-	margin: 0;
-}
-
-.saved-items-title span {
-	color: #5a5959;
-}
-
-.wishlist-container {
-	background: #ffffff;
-	margin: 0 15%;
-	padding-bottom: 300px;
-}
-
-.wishlist-container .product-container {
-	margin: 0 20px;
 }

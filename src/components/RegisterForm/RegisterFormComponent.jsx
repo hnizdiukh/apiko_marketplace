@@ -15,7 +15,7 @@ export const RegisterForm = (props) => {
 					{({ values, handleChange, handleSubmit, isSubmitting }) => (
 						<Form className="form" onSubmit={handleSubmit}>
 							<Input
-								handleChange={handleChange}
+								onChange={handleChange}
 								value={values.email}
 								label="Email"
 								type="email"
@@ -25,7 +25,7 @@ export const RegisterForm = (props) => {
 							/>
 
 							<Input
-								handleChange={handleChange}
+								onChange={handleChange}
 								value={values.fullName}
 								label="Full name"
 								type="text"
@@ -35,25 +35,25 @@ export const RegisterForm = (props) => {
 							/>
 
 							<Input
-								handleChange={handleChange}
+								onChange={handleChange}
 								value={values.password}
 								labelClass="password-label"
 								label="Password"
 								type="password"
 								name="password"
 								autoComplete="new-password"
-								additionalFields={<Eye />}
+								additionalFields={<Eye inputName="password" />}
 							/>
 
 							<Input
-								handleChange={handleChange}
+								onChange={handleChange}
 								value={values.passwordConfirmation}
 								labelClass="password-label"
 								label="Password again"
 								type="password"
 								name="passwordConfirmation"
 								autoComplete="new-password"
-								additionalFields={<Eye />}
+								additionalFields={<Eye inputName="passwordConfirmation" />}
 							/>
 
 							<button className="primary-btn" type="submit" disabled={isSubmitting}>
