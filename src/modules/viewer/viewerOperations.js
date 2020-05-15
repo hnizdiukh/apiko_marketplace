@@ -9,7 +9,6 @@ export function fetchViewer() {
 			const res = await Api.Viewer.get();
 			dispatch(actions.fetchViewer.success(res.data));
 		} catch (err) {
-			console.log(err);
 			dispatch(actions.fetchViewer.error({ message: err.message }));
 		}
 	};

@@ -14,10 +14,8 @@
 	padding-top: 35px;
 }
 
-.sell-wrap button {
-	padding-bottom: 10px;
-}
-
 .sell-wrap textarea {
 	width: 100% !important;
+	height: 180px;
+	resize: vertical;
 }

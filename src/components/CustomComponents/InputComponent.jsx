@@ -2,17 +2,33 @@ import React, { Fragment } from 'react';
 import { Field, ErrorMessage } from 'formik';
 
 const Input = (props) => {
-	const { label, type, name, handleChange, value, labelClass, additionalFields, autoComplete, placeholder } = props;
+	const {
+		label,
+		type,
+		name,
+		onChange,
+		value,
+		labelClass,
+		additionalFields,
+		autoComplete,
+		placeholder,
+		as,
+		rows
+	} = props;
 	return (
 		<Fragment>
-			<label className={labelClass}>{label}</label>
+			<label className={labelClass} htmlFor={name}>
+				{label}
+			</label>
 			<Field
-				onChange={handleChange}
+				onChange={onChange}
 				value={value}
-				type={type}
 				name={name}
+				type={type}
 				autoComplete={autoComplete}
 				placeholder={placeholder}
+				as={as}
+				rows={rows}
 			/>
 			{additionalFields}
 			<ErrorMessage name={name} component="div" className="error-msg" />

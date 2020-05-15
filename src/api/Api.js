@@ -1,14 +1,25 @@
 import axios from 'axios';
+import SocketApi from './SocketApi';
 
 const urls = {
-	login: 'api/auth/login',
-	register: 'api/auth/register',
-	getViewer: 'api/account/user',
-	getProduts: 'api/products/latest',
-	putUser: 'api/account/user',
-	imageUpload: 'api/upload/images',
-	getSaved: 'api/products/saved',
-	search: 'api/products/search'
+	login: '/api/auth/login',
+	register: '/api/auth/register',
+	getViewer: '/api/account/user',
+	putUser: '/api/account/user',
+
+	getProducts: '/api/products/latest',
+	getProduct: '/api/products',
+	addProduct: '/api/products',
+	getSaved: '/api/products/saved',
+
+	imageUpload: '/api/upload/images',
+
+	search: '/api/products/search',
+
+	createChat: '/api/products/',
+	chats: '/api/chats',
+	sendMessage: '/api/chats',
+	getMessages: '/api/chats'
 };
 
 export const Auth = {
@@ -31,10 +42,10 @@ export const Auth = {
 			const token = window.localStorage.getItem('token');
 			this._token = JSON.parse(token);
 
-			this._setTokenToAxios(token);
-		} catch (err) {
-			console.error(err);
-		}
+			this._setTokenToAxios(this._token);
+
+			SocketApi.init(this._token);
+		} catch (err) {}
 	},
 
 	login({ email, password }) {
@@ -45,9 +56,7 @@ export const Auth = {
 		this._token = null;
 		try {
 			window.localStorage.removeItem('token');
-		} catch (err) {
-			console.error(err);
-		}
+		} catch (err) {}
 	},
 
 	register({ email, password, fullName }) {
@@ -57,9 +66,7 @@ export const Auth = {
 	_storeToken() {
 		try {
 			window.localStorage.setItem('token', JSON.stringify(this._token));
-		} catch (error) {
-			console.error(error);
-		}
+		} catch (error) {}
 	},
 
 	_setTokenToAxios(token) {
@@ -78,19 +85,24 @@ export const Viewer = {
 
 export const Products = {
 	get() {
-		return axios.get(urls.getProduts);
+		return axios.get(urls.getProducts);
+	},
+	getProduct(productId) {
+		return axios.get(urls.getProduct + '/' + productId);
+	},
+	add(product) {
+		return axios.post(urls.addProduct, product);
 	},
 	save(productId) {
-		return axios.post(`api/products/${productId}/save`);
+		return axios.post(`/api/products/${productId}/save`);
 	},
 	unsave(productId) {
-		return axios.post(`api/products/${productId}/unsave`);
+		return axios.post(`/api/products/${productId}/unsave`);
 	},
 	getSaved() {
 		return axios.get(urls.getSaved);
 	},
 	search(query) {
-		console.log(urls.search + '?' + query);
 		return axios.get(urls.search, { params: query });
 	}
 };
@@ -100,6 +112,24 @@ export const Image = {
 		const formData = new FormData();
 		formData.append('image', image);
 		return axios.post(urls.imageUpload, formData);
+	}
+};
+
+export const Chats = {
+	createChat(productId) {
+		return axios.post(`${urls.createChat}/${productId}/createChat`);
+	},
+	get() {
+		return axios.get(urls.chats);
+	}
+};
+
+export const Messages = {
+	sendMessage(text, chatId) {
+		return axios.post(`${urls.sendMessage}/${chatId}/messages`, text);
+	},
+	getMessages(chatId) {
+		return axios.get(`${urls.getMessages}/${chatId}/messages`);
 	}
 };
 

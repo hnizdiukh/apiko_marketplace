@@ -1,0 +1,46 @@
+.forgot-password {
+	font-size: 14px;
+	line-height: 16px;
+
+	text-align: center;
+	letter-spacing: 0.4px;
+
+	color: #8c8c8c;
+
+	text-align: right;
+	padding-top: 5px;
+	text-decoration: none;
+}
+
+.have-account {
+	font-size: 14px;
+	line-height: 16px;
+
+	text-align: center;
+	letter-spacing: 0.4px;
+
+	color: #2a2a2a;
+
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.have-account,
+.login-block {
+	margin: 0 auto;
+	background: #ffffff;
+	box-shadow: 0px 2px 42px rgba(0, 0, 0, 0.111233);
+	border-radius: 7px;
+}
+
+.login-block {
+	width: 425px;
+	margin-top: 80px;
+	display: flex;
+	flex-direction: column;
+}
+
+.have-account {
+	width: 425px;
+	margin-top: 20px;
+}

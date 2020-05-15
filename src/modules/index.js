@@ -3,12 +3,16 @@ import app from './app';
 import auth from './auth';
 import viewer from './viewer';
 import products from './products';
+import chat from './chat';
+import messages from './messages';
 
 const appReducer = combineReducers({
 	app,
 	auth,
 	viewer,
-	products
+	products,
+	chat,
+	messages
 });
 
 const rootReducer = (state, action) => {

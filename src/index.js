@@ -15,6 +15,9 @@ import ProfilePage from './components/Profile/ProfileContainer';
 import { ToastContainer } from 'react-toastify';
 import Wishlist from './components/WishlistPage/Wishlist';
 import SellProductPage from './components/SellProductPage/SellProductContainer';
+import ProductPage from './components/Product/ProductPage';
+import ChatModal from './components/Chat/ChatModal';
+import ChatPage from './components/Chat/ChatPage';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -31,7 +34,11 @@ const App = () => {
 				<Route path={routes.PROFILE} component={ProfilePage} />
 				<Route path={routes.WISH_LIST} component={Wishlist} />
 				<Route path={routes.SELL} component={SellProductPage} />
+				<Route path={routes.PRODUCT_ID} component={ProductPage} />
+				<Route path={routes.CHAT_ID} component={ChatPage} />
+				<Route path={routes.CHAT} component={ChatPage} />
 			</Switch>
+			<Route path={routes.PRODUCT_ID} component={ChatModal} />
 		</BrowserRouter>
 	);
 };

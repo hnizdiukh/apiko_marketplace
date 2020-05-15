@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import store from 'src/store/createStore';
 import { authOperations } from 'src/modules/auth';
-import Loading from '../CustomComponents/Loading';
+import Loading from '../CustomComponents/Loading/Loading';
 
 const LoginFormContainer = () => {
 	const history = useHistory();
@@ -30,7 +30,6 @@ const LoginFormContainer = () => {
 		if (isSuccess) {
 			history.push(routes.HOME);
 		} else {
-			console.error('login error: ', storeState.auth.login.error);
 			toast.error('Incorrect email or password!');
 		}
 	};

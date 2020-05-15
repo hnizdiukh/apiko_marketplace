@@ -10,8 +10,21 @@ export function fetchProducts() {
 
 			dispatch(actions.products.success(res.data));
 		} catch (err) {
-			console.log('Products operation ', err);
 			dispatch(actions.products.error({ message: err.message }));
+		}
+	};
+}
+
+export function addProduct(product) {
+	return async function addProductThunk(dispatch) {
+		try {
+			dispatch(actions.addProduct.start());
+
+			const res = await Api.Products.add(product);
+
+			dispatch(actions.addProduct.success(res.data));
+		} catch (err) {
+			dispatch(actions.addProduct.error({ message: err.message }));
 		}
 	};
 }
@@ -25,7 +38,6 @@ export function search(params) {
 
 			dispatch(actions.search.success(res.data));
 		} catch (err) {
-			console.log('Products operation ', err);
 			dispatch(actions.search.error({ message: err.message }));
 		}
 	};
@@ -40,7 +52,6 @@ export function saveProduct(product) {
 
 			dispatch(actions.saveProduct.success(product));
 		} catch (err) {
-			console.log('Products operation ', err);
 			dispatch(actions.saveProduct.error({ message: err.message }));
 		}
 	};
@@ -55,7 +66,6 @@ export function unsaveProduct(product) {
 
 			dispatch(actions.unsaveProduct.success(product));
 		} catch (err) {
-			console.log('Products operation ', err);
 			dispatch(actions.unsaveProduct.error({ message: err.message }));
 		}
 	};
@@ -70,8 +80,21 @@ export function savedProducts() {
 
 			dispatch(actions.savedProducts.success(res.data));
 		} catch (err) {
-			console.log('Products operation ', err);
 			dispatch(actions.savedProducts.error({ message: err.message }));
+		}
+	};
+}
+
+export function getProduct(productId) {
+	return async function savedProductsThunk(dispatch) {
+		try {
+			dispatch(actions.getProduct.start());
+
+			const res = await Api.Products.getProduct(productId);
+
+			dispatch(actions.getProduct.success(res.data));
+		} catch (err) {
+			dispatch(actions.getProduct.error({ message: err.message }));
 		}
 	};
 }
