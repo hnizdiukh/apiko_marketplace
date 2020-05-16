@@ -1,46 +1,57 @@
 .profile-block {
-	background: #ffffff;
-	box-shadow: 0px 2px 42px rgba(0, 0, 0, 0.111233);
-	border-radius: 7px;
+  background: #ffffff;
+  box-shadow: 0px 2px 42px rgba(0, 0, 0, 0.111233);
+  border-radius: 7px;
 
-	margin: 30px auto;
-	max-width: 500px;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
+  margin: 30px auto;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .profile-block h1 {
-	margin-top: 35px;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 22px;
-	line-height: 26px;
-	/* identical to box height */
+  margin-top: 35px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 26px;
 
-	color: #282828;
+  color: #282828;
 }
 
 .profile-page-badge {
-	margin: auto;
+  margin: auto;
 }
 
 .profile-block form {
-	margin: 0 60px 30px;
+  margin: 0 60px 30px;
 }
 
 .upgrade-photo-wrap {
-	position: relative;
-	overflow: hidden;
-	display: inline-block;
-	margin: -10px auto 0;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  margin: -10px auto 0;
 }
 
-.upgrade-photo-wrap input[type=file] {
-	cursor: pointer;
-	display: none;
-	position: absolute;
-	left: 0;
-	top: 0;
-	opacity: 0;
+.upgrade-photo-wrap input[name=profile-image] {
+  cursor: pointer;
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.selected-image {
+  display: flex;
+  justify-content: center;
+}
+
+.selected-image img {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 50%;
 }

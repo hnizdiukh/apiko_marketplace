@@ -18,6 +18,7 @@ import SellProductPage from './components/SellProductPage/SellProductContainer';
 import ProductPage from './components/Product/ProductPage';
 import ChatModalContainer from './components/Chat/ChatModal/ChatModalContainer';
 import ChatPage from './components/Chat/ChatPage';
+import Footer from './components/Footer/Footer';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ const App = () => {
         <Route path={routes.CHAT} component={ChatPage} />
       </Switch>
       <Route path={routes.PRODUCT_ID} component={ChatModalContainer} />
+      <Footer />
     </BrowserRouter>
   );
 };

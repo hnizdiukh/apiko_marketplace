@@ -1,74 +1,91 @@
 button,
 .btn {
-	background: #349a89;
-	border-radius: 5px;
-	font-size: 16px;
-	line-height: 18px;
-	text-align: center;
-	letter-spacing: 0.4px;
+  background: #349a89;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.4px;
 
-	border: 0;
-	padding: 0 45px;
-	color: #ffffff;
-	cursor: pointer;
+  border: 0;
+  padding: 0 45px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  border: 0;
 }
 
 .right-nav-btns {
-	align-items: center;
-	display: flex;
+  align-items: center;
+  display: flex;
 }
 
 .btn-login {
-	font-size: 12px;
-	line-height: 40px;
-	/* identical to box height, or 333% */
+  font-size: 12px;
+  line-height: 40px;
 
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	margin-left: 30px;
-	color: #2b2b2b;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-left: 30px;
+  color: #2b2b2b;
 }
 
 .primary-btn {
-	padding: 20px 10px;
-	margin: 16px 0 20px;
+  padding: 20px 10px;
+  margin: 16px 0 20px;
 }
 
 .sell-btn {
-	font-size: 14px;
-	text-transform: uppercase;
-	line-height: 31px;
+  font-size: 14px;
+  text-transform: uppercase;
+  line-height: 31px;
 }
 
 .wishlist-link {
-	margin-left: 40px;
+  margin-left: 40px;
 }
 
 .upgrade-photo {
-	background-color: #ffffff;
-	border: 1px solid #349a89;
-	box-sizing: border-box;
-	padding: 4px 7px;
-	color: #349a89;
-	max-width: 121px;
-	font-style: normal;
-	font-weight: 300;
-	font-size: 13px;
-	line-height: 15px;
-	text-align: center;
-	letter-spacing: 0.4px;
+  background-color: #ffffff;
+  border: 1px solid #349a89;
+  box-sizing: border-box;
+  padding: 4px 7px;
+  color: #349a89;
+  max-width: 121px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 15px;
+  text-align: center;
+  letter-spacing: 0.4px;
 }
 
 .upgrade-photo-selected {
-	background-color: #349a89;
-	color: #ffffff;
+  background-color: #349a89;
+  color: #ffffff;
 }
 
 .search-btn {
-	background: #3e3961;
-	border-radius: 4px;
-	font-size: 14px;
-	line-height: 31px;
-	text-transform: uppercase;
-	height: 100%;
+  background: #3e3961;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 31px;
+  text-transform: uppercase;
+  height: 100%;
+}
+
+.clear-filter-btn {
+  margin: 0;
+  padding: 9px;
+  display: flex;
+}
+
+.clear-filter-btn svg {
+  padding-right: 5px;
+}
+
+.filter-btn {
+  display: none;
 }
