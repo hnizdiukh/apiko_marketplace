@@ -4,6 +4,7 @@
 	box-sizing: border-box;
 	border-radius: 5px;
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .product-image-input {

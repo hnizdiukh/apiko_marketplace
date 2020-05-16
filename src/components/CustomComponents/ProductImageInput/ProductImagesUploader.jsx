@@ -3,6 +3,7 @@ import './productImageInput.css';
 
 const renderButtons = (images, setImages, imageInput) => {
 	let arrayOfButtons = [];
+	if (images.length > 5) return;
 	for (let i = 0; i < images.length + 1; i++) {
 		arrayOfButtons.push(
 			<Fragment key={i}>
