@@ -45,7 +45,9 @@ export const Auth = {
 			this._setTokenToAxios(this._token);
 
 			SocketApi.init(this._token);
-		} catch (err) {}
+		} catch (err) {
+			console.error(err);
+		}
 	},
 
 	login({ email, password }) {
@@ -56,7 +58,9 @@ export const Auth = {
 		this._token = null;
 		try {
 			window.localStorage.removeItem('token');
-		} catch (err) {}
+		} catch (err) {
+			console.error(err);
+		}
 	},
 
 	register({ email, password, fullName }) {
@@ -66,7 +70,9 @@ export const Auth = {
 	_storeToken() {
 		try {
 			window.localStorage.setItem('token', JSON.stringify(this._token));
-		} catch (error) {}
+		} catch (error) {
+			console.error(error);
+		}
 	},
 
 	_setTokenToAxios(token) {
