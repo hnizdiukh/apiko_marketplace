@@ -16,36 +16,36 @@ import { ToastContainer } from 'react-toastify';
 import Wishlist from './components/WishlistPage/Wishlist';
 import SellProductPage from './components/SellProductPage/SellProductContainer';
 import ProductPage from './components/Product/ProductPage';
-import ChatModal from './components/Chat/ChatModal';
+import ChatModalContainer from './components/Chat/ChatModal/ChatModalContainer';
 import ChatPage from './components/Chat/ChatPage';
 
 const App = () => {
-	const dispatch = useDispatch();
-	dispatch(appOperations.init());
+  const dispatch = useDispatch();
+  dispatch(appOperations.init());
 
-	return (
-		<BrowserRouter>
-			<NavBar />
-			<ToastContainer />
-			<Switch>
-				<Route path={routes.HOME} exact component={Homepage} />
-				<Route path={routes.LOGIN} component={LoginForm} />
-				<Route path={routes.REGISTER} component={RegisterForm} />
-				<Route path={routes.PROFILE} component={ProfilePage} />
-				<Route path={routes.WISH_LIST} component={Wishlist} />
-				<Route path={routes.SELL} component={SellProductPage} />
-				<Route path={routes.PRODUCT_ID} component={ProductPage} />
-				<Route path={routes.CHAT_ID} component={ChatPage} />
-				<Route path={routes.CHAT} component={ChatPage} />
-			</Switch>
-			<Route path={routes.PRODUCT_ID} component={ChatModal} />
-		</BrowserRouter>
-	);
+  return (
+    <BrowserRouter>
+      <NavBar />
+      <ToastContainer />
+      <Switch>
+        <Route path={routes.HOME} exact component={Homepage} />
+        <Route path={routes.LOGIN} component={LoginForm} />
+        <Route path={routes.REGISTER} component={RegisterForm} />
+        <Route path={routes.PROFILE} component={ProfilePage} />
+        <Route path={routes.WISH_LIST} component={Wishlist} />
+        <Route path={routes.SELL} component={SellProductPage} />
+        <Route path={routes.PRODUCT_ID} component={ProductPage} />
+        <Route path={routes.CHAT_ID} component={ChatPage} />
+        <Route path={routes.CHAT} component={ChatPage} />
+      </Switch>
+      <Route path={routes.PRODUCT_ID} component={ChatModalContainer} />
+    </BrowserRouter>
+  );
 };
 
 ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
-	document.querySelector('#root')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.querySelector('#root')
 );

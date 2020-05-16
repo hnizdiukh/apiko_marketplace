@@ -36,7 +36,7 @@ const ProductPage = (props) => {
 	) : (
 		<div className="container product-page">
 			<div className="product-details">
-				<img src={product.photos[0] || '/logo512.png'} alt="product" />
+				<img src={product.photos[0] || '/product-placeholder.png'} alt="product" />
 				<div className="pdp-content-container">
 					<p id="price-pdp">
 						<b>${product.price.toFixed(2)}</b>

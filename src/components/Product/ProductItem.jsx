@@ -19,7 +19,7 @@ const Product = ({ product }) => {
 	return (
 		<div className="product-thumbnail">
 			<Link to={`${routes.PRODUCT}/${product.id}`}>
-				<img src={hasPhoto ? product.photos[0] : 'logo512.png'} alt="product" />
+				<img src={hasPhoto ? product.photos[0] : '/product-placeholder.png'} alt="product" />
 			</Link>
 			{isUserOwner ? (
 				''
