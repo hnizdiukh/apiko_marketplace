@@ -17,7 +17,6 @@ const Profile = ({ user, hanldeImageClick, initialValues, schema }) => {
   let [ imageSelected, setImageSelected ] = useState(null);
 
   const hanldeImageUpload = () => {
-    console.log(imageInput.current.files[0]);
     setImageSelected(imageInput.current.files[0]);
   };
 
@@ -51,8 +50,6 @@ const Profile = ({ user, hanldeImageClick, initialValues, schema }) => {
     }
   };
 
-  console.log(imageSelected);
-
   return (
     <Fragment>
       <div className="profile-block">
@@ -79,7 +76,6 @@ const Profile = ({ user, hanldeImageClick, initialValues, schema }) => {
           ) : (
             <button
               onClick={() => {
-                console.log(imageInput);
                 imageInput.current.click();
               }}
               className="upgrade-photo"

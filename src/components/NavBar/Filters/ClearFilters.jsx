@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import routes from 'src/routes/config';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Icon } from 'src/components/CustomComponents/Icon/Icon';
-import { Unquery, replaceLocationURL, stringify } from 'unquery';
+import { Unquery, stringify } from 'unquery';
 
 const ClearFilters = () => {
   const [ filtersArray, setFiltersArray ] = useState({});
@@ -35,7 +35,6 @@ const ClearFilters = () => {
         );
       }
       if (searchParams) {
-        console.log(searchParams);
         setFiltersArray(searchParams);
       }
     },
@@ -49,7 +48,20 @@ const ClearFilters = () => {
             <span onClick={() => handleClearFilter(key)}>
               <Icon className="close-btn" name="close" width="34" height="34" fill="#349A89" />
             </span>
-            <span>{value}</span>
+            <span>
+              {key === 'priceFrom' || key === 'priceTo' ? key === 'priceFrom' ? (
+                <span>
+                  <span className="lessmore-sign">{'>'}</span>
+                  ${value.toFixed(2)}
+                </span>
+              ) : (
+                <span>
+                  <span className="lessmore-sign">{'<'}</span>${value.toFixed(2)}
+                </span>
+              ) : (
+                value
+              )}
+            </span>
           </div>
         );
       })}
