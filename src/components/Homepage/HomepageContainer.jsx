@@ -6,6 +6,8 @@ import { productsOperations } from 'src/modules/products';
 import './productlist.css';
 import { useLocation } from 'react-router-dom';
 
+const PRODUCT_LIMIT = 20;
+
 const HomepageContainer = () => {
   const dispatch = useDispatch();
   const location = useLocation();
@@ -13,6 +15,7 @@ const HomepageContainer = () => {
   const products = useSelector((state) => state.products.products);
   const isLoading = useSelector((state) => state.products.fetchProducts.isLoading);
   const isSearching = useSelector((state) => state.products.search.isLoading);
+  const isLoadingMore = useSelector((state) => state.products.fetchMoreProducts.isLoading);
 
   useEffect(
     () => {
@@ -30,7 +33,22 @@ const HomepageContainer = () => {
     [ dispatch, location ]
   );
 
-  let HomepageElement = isLoading || isSearching ? <Loading /> : <Homepage products={products} />;
+  const hanldeLoadMore = () => {
+    const offset = products.length;
+    dispatch(productsOperations.fetchMoreProducts({ offset }));
+  };
+
+  let HomepageElement =
+    isLoading || isSearching ? (
+      <Loading />
+    ) : (
+      <Homepage
+        products={products}
+        hanldeLoadMore={hanldeLoadMore}
+        isLoadingMore={isLoadingMore}
+        limit={PRODUCT_LIMIT}
+      />
+    );
 
   if (!products.length && !isLoading && !isSearching) {
     HomepageElement = <div className="no-products not-found">No products found</div>;

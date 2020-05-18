@@ -5,46 +5,44 @@ const INITIAL_STATE = {
   fetchProducts: {
     isLoading: false,
     isError: false,
-    error: null,
-    isSuccess: false
+    error: null
+  },
+  fetchMoreProducts: {
+    isLoading: false,
+    isError: false,
+    error: null
   },
   addProduct: {
     isLoading: false,
     isError: false,
-    error: null,
-    isSuccess: false
+    error: null
   },
   products: [],
   search: {
     isLoading: false,
     isError: false,
     error: null,
-    isSuccess: false,
     searchParams: null
   },
   saveProduct: {
     isLoading: false,
     isError: false,
-    error: null,
-    isSuccess: false
+    error: null
   },
   unsaveProduct: {
     isLoading: false,
     isError: false,
-    error: null,
-    isSuccess: false
+    error: null
   },
   savedProducts: {
     isLoading: false,
     isError: false,
-    error: null,
-    isSuccess: false
+    error: null
   },
   getProduct: {
     isLoading: false,
     isError: false,
-    error: null,
-    isSuccess: false
+    error: null
   },
 
   saved: [],
@@ -59,16 +57,14 @@ export default handleActions(
         ...state.fetchProducts,
         isLoading: true,
         error: null,
-        isError: false,
-        isSuccess: false
+        isError: false
       }
     }),
     [actions.products.success]: (state, action) => ({
       ...state,
       fetchProducts: {
         ...state.fetchProducts,
-        isLoading: false,
-        isSuccess: true
+        isLoading: false
       },
       products: action.payload,
       search: {
@@ -82,8 +78,40 @@ export default handleActions(
         ...state.fetchProducts,
         isLoading: false,
         error: action.payload,
-        isError: true,
-        isSuccess: false
+        isError: true
+      }
+    }),
+
+    // LOAD MORE PRODCUTS
+
+    [actions.fetchMoreProducts.start]: (state) => ({
+      ...state,
+      fetchMoreProducts: {
+        ...state.fetchMoreProducts,
+        isLoading: true,
+        error: null,
+        isError: false
+      }
+    }),
+    [actions.fetchMoreProducts.success]: (state, action) => ({
+      ...state,
+      fetchMoreProducts: {
+        ...state.fetchMoreProducts,
+        isLoading: false
+      },
+      products: [ ...state.products, ...action.payload ],
+      search: {
+        ...state.search,
+        searchParams: null
+      }
+    }),
+    [actions.fetchMoreProducts.error]: (state, action) => ({
+      ...state,
+      fetchMoreProducts: {
+        ...state.fetchMoreProducts,
+        isLoading: false,
+        error: action.payload,
+        isError: true
       }
     }),
 
@@ -95,16 +123,14 @@ export default handleActions(
         ...state.addProduct,
         isLoading: true,
         error: null,
-        isError: false,
-        isSuccess: false
+        isError: false
       }
     }),
     [actions.addProduct.success]: (state, action) => ({
       ...state,
       addProduct: {
         ...state.addProduct,
-        isLoading: false,
-        isSuccess: true
+        isLoading: false
       },
       products: [ ...state.products, action.payload ]
     }),
@@ -114,8 +140,7 @@ export default handleActions(
         ...state.addProduct,
         isLoading: false,
         error: action.payload,
-        isError: true,
-        isSuccess: false
+        isError: true
       }
     }),
 
@@ -127,8 +152,7 @@ export default handleActions(
         ...state.search,
         isLoading: true,
         error: null,
-        isError: false,
-        isSuccess: false
+        isError: false
       }
     }),
     [actions.search.success]: (state, { payload: { res, params } }) => ({
@@ -136,7 +160,6 @@ export default handleActions(
       search: {
         ...state.search,
         isLoading: false,
-        isSuccess: true,
         searchParams: params
       },
       products: res
@@ -147,8 +170,7 @@ export default handleActions(
         ...state.search,
         isLoading: false,
         error: action.payload,
-        isError: true,
-        isSuccess: false
+        isError: true
       }
     }),
 
@@ -160,16 +182,14 @@ export default handleActions(
         ...state.savedProducts,
         isLoading: true,
         error: null,
-        isError: false,
-        isSuccess: false
+        isError: false
       }
     }),
     [actions.savedProducts.success]: (state, action) => ({
       ...state,
       savedProducts: {
         ...state.savedProducts,
-        isLoading: false,
-        isSuccess: true
+        isLoading: false
       },
       saved: action.payload
     }),
@@ -179,8 +199,7 @@ export default handleActions(
         ...state.savedProducts,
         isLoading: false,
         error: action.payload,
-        isError: true,
-        isSuccess: false
+        isError: true
       }
     }),
 
@@ -192,16 +211,14 @@ export default handleActions(
         ...state.saveProduct,
         isLoading: true,
         error: null,
-        isError: false,
-        isSuccess: false
+        isError: false
       }
     }),
     [actions.saveProduct.success]: (state, action) => ({
       ...state,
       saveProduct: {
         ...state.saveProduct,
-        isLoading: false,
-        isSuccess: true
+        isLoading: false
       },
       saved: [ ...state.saved, action.payload ]
     }),
@@ -211,8 +228,7 @@ export default handleActions(
         ...state.saveProduct,
         isLoading: false,
         error: action.payload,
-        isError: true,
-        isSuccess: false
+        isError: true
       }
     }),
 
@@ -224,16 +240,14 @@ export default handleActions(
         ...state.unsaveProduct,
         isLoading: true,
         error: null,
-        isError: false,
-        isSuccess: false
+        isError: false
       }
     }),
     [actions.unsaveProduct.success]: (state, action) => ({
       ...state,
       unsaveProduct: {
         ...state.unsaveProduct,
-        isLoading: false,
-        isSuccess: true
+        isLoading: false
       },
       saved: state.saved.filter((product) => product.id !== action.payload.id)
     }),
@@ -243,8 +257,7 @@ export default handleActions(
         ...state.unsaveProduct,
         isLoading: false,
         error: action.payload,
-        isError: true,
-        isSuccess: false
+        isError: true
       }
     }),
 
@@ -254,16 +267,14 @@ export default handleActions(
         ...state.getProduct,
         isLoading: true,
         error: null,
-        isError: false,
-        isSuccess: false
+        isError: false
       }
     }),
     [actions.getProduct.success]: (state, action) => ({
       ...state,
       getProduct: {
         ...state.getProduct,
-        isLoading: false,
-        isSuccess: true
+        isLoading: false
       },
       product: action.payload
     }),
@@ -273,8 +284,7 @@ export default handleActions(
         ...state.getProduct,
         isLoading: false,
         error: action.payload,
-        isError: true,
-        isSuccess: false
+        isError: true
       }
     })
   },

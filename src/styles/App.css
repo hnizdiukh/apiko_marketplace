@@ -171,3 +171,26 @@ select {
 .Toastify__toast--success {
   background: #349a89 !important;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}

@@ -6,11 +6,24 @@ export function fetchProducts() {
     try {
       dispatch(actions.products.start());
 
-      const res = await Api.Products.get();
+      const res = await Api.Products.get({ offset: 0, limit: 20 });
 
       dispatch(actions.products.success(res.data));
     } catch (err) {
       dispatch(actions.products.error({ message: err.message }));
+    }
+  };
+}
+
+export function fetchMoreProducts({ offset }) {
+  return async function fetchMoreProductsThunk(dispatch) {
+    try {
+      dispatch(actions.fetchMoreProducts.start());
+
+      const res = await Api.Products.get({ offset });
+      dispatch(actions.fetchMoreProducts.success(res.data));
+    } catch (err) {
+      dispatch(actions.fetchMoreProducts.error({ message: err.message }));
     }
   };
 }

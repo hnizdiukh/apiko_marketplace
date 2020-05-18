@@ -80,6 +80,10 @@
   padding-top: 50px;
 }
 
+.center .loading {
+  margin-right: 15px;
+}
+
 @media screen and (min-width: 1600px) {
   .product-thumbnail {
     width: 250px;

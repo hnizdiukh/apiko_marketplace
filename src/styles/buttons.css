@@ -89,3 +89,8 @@ button::-moz-focus-inner {
 .filter-btn {
   display: none;
 }
+
+.load-more-btn {
+  margin-top: 20px;
+  padding: 10px;
+}
