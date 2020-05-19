@@ -91,6 +91,7 @@ const Messages = ({ chat }) => {
             value={messageInput}
             placeholder="Type your message here..."
             onChange={(e) => setMessageInput(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && handleMessageSubmit(e)}
           />
           <span className="emoji-picker-btn" onClick={() => setDisplayEmojiPicker(!displayEmojiPicker)}>
             <Icon name="emoji" width="22" height="22" />
@@ -99,8 +100,7 @@ const Messages = ({ chat }) => {
           <span className="emoji-picker" style={{ display: displayEmojiPicker ? 'flex' : 'none' }} ref={emojiRef}>
             <Picker onSelect={onEmojiClick} />
           </span>
-
-          <button type="submit" onClick={() => setDisplayEmojiPicker(false)}>
+          <button type="submit" name="button" onClick={() => setDisplayEmojiPicker(false)}>
             Send
           </button>
         </form>
