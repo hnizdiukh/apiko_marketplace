@@ -1,6 +1,6 @@
 # 8th-react-intensive-volodymyr-hnizdiukh
 
-Deployed on: https://apiko-marketplace-hnizdiukh.herokuapp.com/
+Deployed to: https://apiko-marketplace-hnizdiukh.herokuapp.com/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
