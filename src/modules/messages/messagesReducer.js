@@ -8,7 +8,7 @@ const INITIAL_STATE = {
     error: null
   },
   messages: [],
-  message: null,
+  lastMessage: null,
   sendMessage: {
     isLoading: false,
     isError: false,
@@ -55,7 +55,8 @@ export default handleActions(
         error: null,
         isError: false
       },
-      messages: [ ...state.messages, action.payload ]
+      messages: [ ...state.messages, action.payload ],
+      lastMessage: action.payload
     }),
     [actions.sendMessage.success]: (state, { payload: { oldMessageId, result } }) => {
       const messages = state.messages.filter((i) => i.id !== oldMessageId).concat(result);
