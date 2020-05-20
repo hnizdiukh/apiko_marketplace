@@ -70,7 +70,7 @@ const Messages = ({ chat }) => {
             return (
               <div
                 className={chat.participants[0].id === message.ownerId ? 'message-recieved' : 'message-send'}
-                key={message.id}
+                key={`${message.id}${chat.id}`}
               >
                 <div className="message-text">{message.text}</div>
                 <div className="message-time-under">
