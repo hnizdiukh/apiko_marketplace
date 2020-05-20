@@ -7,7 +7,7 @@ export const Homepage = ({ products, hanldeLoadMore, isLoadingMore, limit }) => 
     <div className="container">
       <div className="product-list">
         {products ? products.map((p) => <Product product={p} key={p.id} />) : <Loading />}
-        {products.length === limit && (
+        {products.length % limit === 0 && (
           <div className="center col">
             {isLoadingMore && <Loading height={'auto'} />}
             <button className="load-more-btn" onClick={hanldeLoadMore}>
