@@ -6,6 +6,10 @@
   "proxies": {
     "/api/": {
       "origin": "${API_URL}"
+    },
+    "/socket.io/": {
+      "origin": "${API_URL}",
+      "ws": true
     }
   }
 }
