@@ -5,7 +5,7 @@
   },
   "proxies": {
     "/api/": {
-      "origin": "https://apiko-marketplace-api-2019.herokuapp.com/"
+      "origin": "${API_URL}"
     }
   }
 }
