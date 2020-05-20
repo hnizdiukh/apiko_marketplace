@@ -7,7 +7,7 @@ const proxy = createProxy({
 });
 
 const wsProxy = createProxy({
-  target: 'https://apiko-intensive-backend.herokuapp.com/',
+  target: 'https://apiko-marketplace-api-2019.herokuapp.com/',
   changeOrigin: true,
   ws: true
 });
