@@ -47,6 +47,7 @@ const HomepageContainer = () => {
         hanldeLoadMore={hanldeLoadMore}
         isLoadingMore={isLoadingMore}
         limit={PRODUCT_LIMIT}
+        search={location.search}
       />
     );
 
