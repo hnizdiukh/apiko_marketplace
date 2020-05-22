@@ -3,6 +3,7 @@ import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import routes from 'src/routes/config';
 import { useSelector } from 'react-redux';
+import getProductImage from 'src/utils/getProductImage';
 
 const ChatItem = ({ chat, current }) => {
   const calendarStrings = {
@@ -11,6 +12,8 @@ const ChatItem = ({ chat, current }) => {
     lastWeek: '[last] dddd [at] HH:mm',
     sameElse: 'L'
   };
+
+  const imageSrc = getProductImage(chat.product.photos);
 
   const lastMessageState = useSelector((state) => state.messages.lastMessage);
 
@@ -24,7 +27,7 @@ const ChatItem = ({ chat, current }) => {
       </div>
       <div className="product-with">
         <span className="product-image">
-          <img src={chat.product.photos[0] || '/product-placeholder.png'} alt={chat.product.title} />
+          <img src={imageSrc} alt={chat.product.title} />
         </span>
         <div className="chat-product-details">
           <span className="chat-product-name">{chat.product.title}</span>

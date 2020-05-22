@@ -18,9 +18,11 @@ const Product = ({ product }) => {
 
   return (
     <div className="product-thumbnail">
-      <Link to={`${routes.PRODUCT}/${product.id}`}>
-        <img src={hasPhoto ? product.photos[0] : '/product-placeholder.png'} alt={product.title} />
-      </Link>
+      <div className="product-img">
+        <Link to={`${routes.PRODUCT}/${product.id}`}>
+          <img src={hasPhoto ? product.photos[0] : '/product-placeholder.png'} alt={product.title} />
+        </Link>
+      </div>
       {isUserOwner ? (
         ''
       ) : (

@@ -10,6 +10,7 @@ import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 import 'emoji-mart/css/emoji-mart.css';
 import { Picker } from 'emoji-mart';
+import getProductImage from 'src/utils/getProductImage';
 
 const Messages = ({ chat }) => {
   const [ messageInput, setMessageInput ] = useState('');
@@ -46,6 +47,8 @@ const Messages = ({ chat }) => {
     return <div className="no-chat-selected not-found">Please select chat to start messaging</div>;
   }
 
+  const imageSrc = getProductImage(chat.product.photos);
+
   return (
     <Fragment>
       <div className="messages-header">
@@ -53,7 +56,7 @@ const Messages = ({ chat }) => {
         <div className="messaging-with">{chat.participants[0].fullName}</div>
         <Link to={`${routes.PRODUCT}/${chat.product.id}`} className="chat-product">
           <span className="product-image">
-            <img src={chat.product.photos[0] || '/product-placeholder.png'} alt={chat.product.title} />
+            <img src={imageSrc} alt={chat.product.title} />
           </span>
           <div className="chat-product-details">
             <span className="chat-product-name">{chat.product.title}</span>
