@@ -59,7 +59,7 @@ const ClearFilters = () => {
                   <span className="lessmore-sign">{'<'}</span>${value.toFixed(2)}
                 </span>
               ) : (
-                value
+                value.replace(/\+/g, ' ')
               )}
             </span>
           </div>

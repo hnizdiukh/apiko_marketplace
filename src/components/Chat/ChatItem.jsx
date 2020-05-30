@@ -2,6 +2,8 @@ import React from 'react';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import routes from 'src/routes/config';
+import { useSelector } from 'react-redux';
+import getProductImage from 'src/utils/getProductImage';
 
 const ChatItem = ({ chat, current }) => {
   const calendarStrings = {
@@ -11,15 +13,21 @@ const ChatItem = ({ chat, current }) => {
     sameElse: 'L'
   };
 
+  const imageSrc = getProductImage(chat.product.photos);
+
+  const lastMessageState = useSelector((state) => state.messages.lastMessage);
+
+  let lastMessage = lastMessageState ? lastMessageState.text : chat.lastMessage ? chat.lastMessage.text : '';
+
   return (
     <Link to={`${routes.CHAT}/${chat.id}`} className={chat.id === current ? 'current-chat chat-item' : 'chat-item'}>
       <div className="chat-with">
         <span className="chat-with-fullName">{chat.participants ? chat.participants[0].fullName : ''}</span>
-        <span className="chat-last-message">{chat.lastMessage ? chat.lastMessage.text : ''}</span>
+        <span className="chat-last-message">{lastMessage}</span>
       </div>
       <div className="product-with">
         <span className="product-image">
-          <img src={chat.product.photos[0] || '/product-placeholder.png'} alt={chat.product.title} />
+          <img src={imageSrc} alt={chat.product.title} />
         </span>
         <div className="chat-product-details">
           <span className="chat-product-name">{chat.product.title}</span>

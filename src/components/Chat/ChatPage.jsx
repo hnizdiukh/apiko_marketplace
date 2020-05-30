@@ -46,7 +46,7 @@ const ChatPage = (props) => {
         <div className="chat-list">
           <SimpleBar style={{ maxHeight: window.innerHeight - 78 }}>
             {isChatsLoading ? (
-              ''
+              <Loading />
             ) : chats.length ? (
               chats.map((chat) => <ChatItem chat={chat} key={chat.id} current={props.match.params.chatId} />)
             ) : (
